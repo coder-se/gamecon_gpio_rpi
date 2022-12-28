@@ -46,7 +46,7 @@ MODULE_LICENSE("GPL");
 
 #define BCM2708_PERI_BASE gc_bcm2708_peri_base
 
-#define GPIO_BASE                (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
+#define GPIO_BASE                (BCM2708_PERI_BASE + 0x3F000000) /* GPIO controller */
 
 #define GPIO_SET *(gpio+7)
 #define GPIO_CLR *(gpio+10)
@@ -98,7 +98,7 @@ static u32 __init gc_bcm_peri_base_probe(void) {
 		}
 	}
 
-	return base_address == 1 ? 0x02000000 : base_address;
+	return base_address == 1 ? 0x3F000000 : base_address;
 }
 
 void delayMicrosecondsHard (unsigned int howLong)
@@ -172,12 +172,12 @@ static struct gc *gc_base;
 
 /* GPIO pins 0, 1, 4, 7, 2, 3 */
 enum pad_gpios {
-	PAD1_GPIO = 0,
-	PAD2_GPIO = 1,
-	PAD3_GPIO = 4,
-	PAD4_GPIO = 7,
-	PAD5_GPIO = 2,
-	PAD6_GPIO = 3
+	PAD1_GPIO = 22,
+	PAD2_GPIO = 27,
+	PAD3_GPIO = 17,
+	PAD4_GPIO = 23,
+	PAD5_GPIO = 24,
+	PAD6_GPIO = 25
 };
 
 /* GPIO pins 10, 11 */
